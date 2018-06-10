@@ -1,14 +1,12 @@
 <!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <body style='margin : 0px; overflow: hidden;'>
 	<a-scene embedded arjs='sourceType: webcam;'>
-			<a-assets>
-                <video id="video" autoplay loop="true" src="video/Video.mp4" webkit-playsinline>
-            </a-assets>
 		 <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
 			<!-- <a-entity gltf-model="url(/centurion/centurion.gltf)"> </a-entity> --> <!-- Code for 3D Object--> 
-			<a-video src="#video" width="16" height="9" position="0 1 -1"></a-video>
+			<a-entity animation-mixer="loop: repeat" shadow="cast: true" id="Gunnar" scale="0 0 0" position="0 0 0" fbx-model=”src: url(/AR_2d_object.fbx);”> </a-entity>
 		 </a-marker-camera>
 	</a-scene>
 </body>
