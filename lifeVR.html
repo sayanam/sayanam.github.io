@@ -6,19 +6,49 @@
 <div id="canvas">
   <div id="startButton">Play</div>
  </div>
+ <button id="play-button">Play</button>
+
+<a-scene id="vr-scene">
+  <a-camera 
+    id="camera"
+    position="0 1.8 4"
+    cursor-visible="true"
+    cursor-scale="2" 
+    cursor-color="#000000" 
+    cursor-offset="2" 
+    cursor-maxdistance="100"
+    cursor-opacity="0.7"></a-camera>
  
-	<a-scene embedded arjs='sourceType: webcam;'>
+  <a-assets>
+    <video id="vid" src="video/Video.mp4"
+    crossOrigin="anonymous"
+    autoplay="false"
+    loop="true"
+    style="display: none"></video>
+  </a-assets>
+ <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
+ <a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,180,0"></a-video>
+		 </a-marker-camera>
+  <a-entity geometry="primitive: sphere;
+                      radius: 5000;
+                      segmentsWidth: 64;
+                      segmentsHeight: 64;"
+            material="shader: flat; src: #vid;"
+            scale="-1 1 1">
+  </a-entity>
+
+</a-scene>
+	<!--<a-scene embedded arjs='sourceType: webcam;'>
 		<a-assets>
 		        <img id="buttonImg" src="button.png">
                 <video id="video" autoplay loop="true"  src="video/Video.mp4" webkit-playsinline></video>
         </a-assets>
 		 <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
 			 <!--<a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
-			
-			<a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,90,0"></a-video>
+		<!--	<a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,180,0"></a-video>
 		 </a-marker-camera>
 		<!-- <a-entity id="play-button" geometry="primitive: box" material="color: red" position="0 0 -2"/> -->
-	</a-scene>
+	<!--</a-scene>-->
 </body> 
 <!--<script type="text/javascript">
 	var vid = document.getElementById('vid');
