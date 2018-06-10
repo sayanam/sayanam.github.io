@@ -4,7 +4,11 @@
 <body style='margin : 0px; overflow: hidden;'>
 	<a-scene embedded arjs='sourceType: webcam;'>
 		 <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
-			<a-entity gltf-model="url(/centurion/centurion.gltf)"> </a-entity>
+			<!-- <a-entity gltf-model="url(/centurion/centurion.gltf)"> </a-entity> --> <!-- Code for 3D Object--> 
+			<a-assets>
+                <video id="video" autoplay loop="true" src="video/Video.mp4" webkit-playsinline>
+            </a-assets>
+			<a-video src="#video" width="16" height="9" position="0 1 -1"></a-video>
 		 </a-marker-camera>
 	</a-scene>
 </body>
