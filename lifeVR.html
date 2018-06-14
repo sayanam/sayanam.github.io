@@ -1,59 +1,29 @@
 <!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
+<html>
+<head>
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('video').trigger('pause');
+		$('play-button').click(
+			$('video').trigger('play');
+		);
+	});
+</script>
+<head>
 <body style='margin : 0px; overflow: hidden;'>
-
-<div id="canvas">
-  <div id="startButton">Play</div>
- </div>
- <button id="play-button">Play</button>
-
-<a-scene id="vr-scene">
-  <a-camera 
-    id="camera"
-    position="0 1.8 4"
-    cursor-visible="true"
-    cursor-scale="2" 
-    cursor-color="#000000" 
-    cursor-offset="2" 
-    cursor-maxdistance="100"
-    cursor-opacity="0.7"></a-camera>
- 
-  <a-assets>
-    <video id="vid" src="video/Video.mp4"
-    crossOrigin="anonymous"
-    autoplay="false"
-    loop="true"
-    style="display: none"></video>
-  </a-assets>
- <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
- <a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,180,0"></a-video>
-		 </a-marker-camera>
-  <a-entity geometry="primitive: sphere;
-                      radius: 5000;
-                      segmentsWidth: 64;
-                      segmentsHeight: 64;"
-            material="shader: flat; src: #vid;"
-            scale="-1 1 1">
-  </a-entity>
-
-</a-scene>
-	<!--<a-scene embedded arjs='sourceType: webcam;'>
+	<a-scene embedded arjs='sourceType: webcam;'>
 		<a-assets>
-		        <img id="buttonImg" src="button.png">
-                <video id="video" autoplay loop="true"  src="video/Video.mp4" webkit-playsinline></video>
+                <video id="video" autoplay loop="true"  src="video/Video.mp4" webkit-playsinline>
         </a-assets>
 		 <a-marker-camera preset='custom' type='pattern' url='qr-pattern-marker.patt'>
-			 <!--<a-box position='0 0.5 0' material='opacity: 0.5;'></a-box> -->
-		<!--	<a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,180,0"></a-video>
+			 <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+			
+			<a-video src="#video" width="4" height="3" position="0 0.5 0" rotation="0,90,0"></a-video>
 		 </a-marker-camera>
-		<!-- <a-entity id="play-button" geometry="primitive: box" material="color: red" position="0 0 -2"/> -->
-	<!--</a-scene>-->
+		 <a-entity id="play-button" geometry="primitive: box" material="opacity: 0.5;" position="0 0 -2" width="4" height="3" />
+	</a-scene>
 </body> 
-<!--<script type="text/javascript">
-	var vid = document.getElementById('vid');
-    document.getElementById('play-button').addEventListener("click", function(){
-  this.style.display = 'none';
-  vid.play();
-}, false);
-</script>
+</html>
